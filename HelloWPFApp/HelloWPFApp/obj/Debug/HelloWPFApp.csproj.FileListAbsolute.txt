@@ -1,1 +1,14 @@
 C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\bin\Debug\HelloWPFApp.exe.config
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\bin\Debug\HelloWPFApp.exe
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\bin\Debug\HelloWPFApp.pdb
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\MainWindow.g.cs
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\App.g.cs
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp_MarkupCompile.cache
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp_MarkupCompile.lref
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\MainWindow.baml
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.g.resources
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.Properties.Resources.resources
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.csproj.GenerateResource.Cache
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.exe
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.pdb
+C:\Users\Kevin\Desktop\WT-Fantasy-Draft\HelloWPFApp\HelloWPFApp\obj\Debug\HelloWPFApp.csprojResolveAssemblyReference.cache

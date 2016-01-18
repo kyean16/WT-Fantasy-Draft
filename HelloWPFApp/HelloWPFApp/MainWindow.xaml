@@ -11,12 +11,8 @@
             <ColumnDefinition Width="263*"/>
             <ColumnDefinition Width="257*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Right" Margin="0,55,89,0" TextWrapping="Wrap" Text="Select a message option and then choose the Display button.
-                   
-                   " VerticalAlignment="Top" RenderTransformOrigin="0.037,0.438" Width="338" Grid.ColumnSpan="2"/>
-        <RadioButton x:Name="radioButton1" Content="Hello" HorizontalAlignment="Left" Margin="127,110,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButton2" Content="GoodBye" HorizontalAlignment="Left" Margin="52.8,110,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="button" Content="Display" HorizontalAlignment="Left" Margin="225,186,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="button_Click"/>
-
+        <Button x:Name="button1" Content="Simulate Draft Order" HorizontalAlignment="Left" Margin="82.8,23,0,0" VerticalAlignment="Top" Width="133" Click="button_Click" Grid.Column="1"/>
+        <TextBox x:Name="textBoxPlayer" HorizontalAlignment="Left" Height="279" Margin="23,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="211"/>
+        <Button x:Name="button" Content="Simulate Draft Rounds" HorizontalAlignment="Left" VerticalAlignment="Top" Width="133" Grid.Column="1" Margin="82.8,63,0,0" Click="button_Click_1"/>
     </Grid>
 </Window>
