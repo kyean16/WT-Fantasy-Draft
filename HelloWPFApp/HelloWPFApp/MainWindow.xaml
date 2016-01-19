@@ -5,14 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelloWPFApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="263*"/>
             <ColumnDefinition Width="257*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button1" Content="Simulate Draft Order" HorizontalAlignment="Left" Margin="82.8,23,0,0" VerticalAlignment="Top" Width="133" Click="button_Click" Grid.Column="1"/>
-        <TextBox x:Name="textBoxPlayer" HorizontalAlignment="Left" Height="279" Margin="23,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="211"/>
-        <Button x:Name="button" Content="Simulate Draft Rounds" HorizontalAlignment="Left" VerticalAlignment="Top" Width="133" Grid.Column="1" Margin="82.8,63,0,0" Click="button_Click_1"/>
+        <Button x:Name="SimulateDraftOrderButton" Content="Simulate Draft Order" HorizontalAlignment="Left" Margin="225,23,0,0" VerticalAlignment="Top" Width="133" Click="SimulateDraftOrderButton_Click" Grid.Column="1"/>
+        <TextBox x:Name="textBoxPlayer" HorizontalAlignment="Left" Height="279" Margin="36,49,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="211"/>
+        <Button x:Name="SimulateDraftRounds" Content="Simulate Draft Rounds" HorizontalAlignment="Left" VerticalAlignment="Top" Width="133" Grid.Column="1" Margin="225,63,0,0" Click="SimulateDraftRounds_Click"/>
+        <TextBox x:Name="textBoxPlayerRounds" HorizontalAlignment="Left" Height="279" Margin="292,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="211" Grid.ColumnSpan="2"/>
+        <Label x:Name="label" Content="Player Order" HorizontalAlignment="Left" Margin="36,16,0,0" VerticalAlignment="Top" Height="27" Width="76" RenderTransformOrigin="-0.337,0.23"/>
+        <Label x:Name="label_Copy" Content="Round Order" HorizontalAlignment="Left" Margin="292,16,0,0" VerticalAlignment="Top" Height="27" Width="80" RenderTransformOrigin="-0.337,0.23"/>
+        <TextBox x:Name="textBoxPlayerTurns" HorizontalAlignment="Left" Height="279" Margin="36,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <Label x:Name="label1" Content="Player Turns" HorizontalAlignment="Left" Margin="36,340,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SimulateDraftTurnsButton" Content="Simulate Draft Turns" Grid.Column="1" HorizontalAlignment="Left" Margin="225,102,0,0" VerticalAlignment="Top" Width="133" Click="SimulateDraftTurnsButton_Click" RenderTransformOrigin="0.478,2.16"/>
+        <TextBox x:Name="textBoxResult" HorizontalAlignment="Left" Height="279" Margin="292,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Grid.ColumnSpan="2"/>
+        <Label x:Name="label1_Copy" Content="Results&#xD;&#xA;" HorizontalAlignment="Left" Margin="292,340,0,0" VerticalAlignment="Top" Width="54" Height="26"/>
+        <Button x:Name="HardResetButton" Content="Hard Reset Database" Grid.Column="1" HorizontalAlignment="Left" Margin="225,610,0,0" VerticalAlignment="Top" Width="133" Click="HardResetButton_Click"/>
+        <Button x:Name="SavedDataButton" Content="Saved Data" Grid.Column="1" HorizontalAlignment="Left" Margin="225,145,0,0" VerticalAlignment="Top" Width="133" Click="SavedDataButton_Click"/>
     </Grid>
 </Window>
