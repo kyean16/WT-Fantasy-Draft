@@ -24,5 +24,6 @@
         <Label x:Name="label1_Copy" Content="Results&#xD;&#xA;" HorizontalAlignment="Left" Margin="292,340,0,0" VerticalAlignment="Top" Width="54" Height="26"/>
         <Button x:Name="HardResetButton" Content="Hard Reset Database" Grid.Column="1" HorizontalAlignment="Left" Margin="225,610,0,0" VerticalAlignment="Top" Width="133" Click="HardResetButton_Click"/>
         <Button x:Name="SavedDataButton" Content="Saved Data" Grid.Column="1" HorizontalAlignment="Left" Margin="225,145,0,0" VerticalAlignment="Top" Width="133" Click="SavedDataButton_Click"/>
+        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="256,240,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.509,0.57" Click="button_Click"/>
     </Grid>
 </Window>

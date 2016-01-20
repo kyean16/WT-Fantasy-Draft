@@ -31,11 +31,14 @@ namespace HelloWPFApp
 
         public MainWindow()
         {
+            Random rnd = new Random();
             //Initiliaze the playerList Arrray
             for (int i = 1; i < 9; i++)
             {
                 //Testing
-                DraftPlayer player = new DraftPlayer("Player " + i);
+                int randomNumber = rnd.Next(2);
+                Console.Write(randomNumber);
+                DraftPlayer player = new DraftPlayer("Player " + i ,randomNumber);
                 playerListOG.Add(player);
             }
             InitializeComponent();
@@ -62,6 +65,7 @@ namespace HelloWPFApp
             {
                 int randomNumber = random.Next(0, playerListTemp.Count);
                 playerDraftOrder += playerListTemp[randomNumber].getPlayerName() + "\n"; //String
+                playerListTemp[randomNumber].setDraftOrder(b+1); //SetDraftOrderNumber
                 orderArray[b] = playerListTemp[randomNumber]; //Change to order
                 playerListTemp.RemoveAt(randomNumber);
                 b++;
@@ -113,40 +117,51 @@ namespace HelloWPFApp
         {
             textBoxPlayerTurns.Text = "";
             int i = 0;
-            int roundNum = 1;
+            int roundNum = 0;
             while (draftRoundSchedule.Count > 0) //While the queue is not empty
             {
                 DraftPlayer tempPlayer = draftRoundSchedule.Dequeue();
                 if (i == 0)
                 {
-                    textBoxPlayerTurns.Text += "--Round " + (roundNum) + "\n";
                     roundNum++;
+                    textBoxPlayerTurns.Text += "--Round " + (roundNum) + "\n";
                     i = 8;
                 }
-                textBoxPlayerTurns.Text += tempPlayer.getPlayerName() + " selected: " + tempPlayer.testDraftAPlayer() + "\n";
+                textBoxPlayerTurns.Text += tempPlayer.getPlayerName() + " selected: " + tempPlayer.draft(roundNum) + "\n";
+
                 i--;
             }
-            displayResult();
+            DisplayResult();
             ResetListOfPlayer();
         }
 
+        /// <summary>
+        /// Hard Reset Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HardResetButton_Click(object sender, RoutedEventArgs e)
         {
             ResetListOfPlayer();
             MessageBox.Show("Successfuly Reset Player Roster Database ");
         }
 
+        /// <summary>
+        /// Reset all selected to 0
+        /// </summary>
         private void ResetListOfPlayer()
         {
             OleDbConnection connection = new OleDbConnection();
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Kevin\Desktop\WT-Fantasy-Draft\DatabaseNFL.accdb;Persist Security Info=False;";
-            String testString = "";
             try
             {
                 //Database Connection
                 connection.Open(); //Open the Connection
                 string updateString = "UPDATE NFL2015Roster SET Selected = 'No'";
                 OleDbCommand cmd = new OleDbCommand(updateString, connection);
+                cmd.ExecuteNonQuery();
+                updateString = "UPDATE NFL2015Teams SET Selected = 'No'";
+                cmd = new OleDbCommand(updateString, connection);
                 cmd.ExecuteNonQuery();
 
                 connection.Close(); //Close Connection
@@ -157,9 +172,10 @@ namespace HelloWPFApp
             }
         }
 
-       
-
-        private void displayResult()
+        /// <summary>
+        /// DisplayResults
+        /// </summary>
+        private void DisplayResult()
         {
             textBoxResult.Text = "";
             for(int i = 0; i <orderArray.Length ; i++)
@@ -173,21 +189,103 @@ namespace HelloWPFApp
         /// </summary>
         private void SavedDataButton_Click(object sender, RoutedEventArgs e)
         {
+            int simNum = 0;
             OleDbConnection connection = new OleDbConnection();
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Kevin\Desktop\WT-Fantasy-Draft\DatabaseNFL.accdb;Persist Security Info=False;";
             try
             {
                 //Database Connection
                 connection.Open(); //Open the Connection
+
+                //Receive Simulation Number and increments by one;
+                string findSimNumString = "SELECT MAX(SimulationNumber) as simNumber from SimulationSheet8;";
+                OleDbCommand command = new OleDbCommand(findSimNumString, connection);
+                OleDbDataReader reader =  command.ExecuteReader();
+                while (reader.Read())
+                {
+                    simNum = Convert.ToInt32(reader["SimNumber"].ToString());
+                    simNum++;
+
+                    break;
+                }
+
                 for (int i = 0; i<orderArray.Length; i++)
                 {
-                    string updateString = "INSERT into SimulationSheet8 (SimulationNumber,Players,FantasyResult) VALUES (1, '" + orderArray[i].getPlayerName() + "', '" + orderArray[i].getTotalProjectedPoints() +"' );";
+                    string updateString = "INSERT into SimulationSheet8 " +
+                                          "(SimulationNumber,Players,DraftOrder,Round1,Round2,Round3,Round4,Round5,Round6,Round7,Round8,Round9,Round10,Round11,Round12,Round13,Round14,Round15,Strategy,FantasyResult) " +
+                                          "VALUES ('" + simNum + "', "+ 
+                                                  "'" + orderArray[i].getPlayerName() + "' ," +
+                                                  "'" + orderArray[i].getDraftOrder() + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(0) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(1) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(2) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(3) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(4) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(5) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(6) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(7) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(8) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(9) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(10) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(11) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(12) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(13) + "' ," +
+                                                  "'" + orderArray[i].getNFLPlayerRoundName(14) + "' ," +
+                                                  "'" + orderArray[i].getStrategyName() + "' ," +
+                                                  "'" + orderArray[i].getTotalProjectedPoints() + "' );";
                     OleDbCommand cmd = new OleDbCommand(updateString, connection);
                     cmd.ExecuteNonQuery();
                 }
 
                 connection.Close(); //Close Connection
                 MessageBox.Show("Successfuly Saved Result into Database ");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Kevin\Desktop\WT-Fantasy-Draft\DatabaseNFL.accdb;Persist Security Info=False;";
+            try
+            {
+                //Database Connection
+                connection.Open(); //Open the Connection
+                Console.Write("Connection Sucessful \n");
+                Console.Write("Here 1");
+                string selectString = "Select top 1 a.* " +
+                                      "From NFL2015FantasyPointProject as a, NFL2015Roster as b " +
+                                      "Where a.FirstName = b.FirstName AND a.LastName = b.LastName AND b.Selected <>'Yes' and a.PositionNFL = 'CAR'" +
+                                      "Order by a.FantasyPoints DESC;";
+                OleDbCommand command = new OleDbCommand(selectString, connection);
+                OleDbDataReader reader = command.ExecuteReader();
+                //Loop through the results
+                String firstName = "";
+                String lastName = "";
+                String position = "";
+                String team = "";
+                Double projectedPoints = 0;
+
+                while (reader.Read())
+                {
+                    firstName = reader["FirstName"].ToString();
+                    lastName = reader["LastName"].ToString();
+                    position = reader["Position"].ToString();
+                    team = reader["Team"].ToString();
+                    projectedPoints = Convert.ToDouble(reader["FantasyPoints"].ToString());
+                    break;
+                }
+              
+
+                //Update value in Roster so it is not selected again
+                string updateString = "UPDATE NFL2015Roster set Selected='Yes' where FirstName = '" + firstName + "' and LastName = '" + lastName + "';";
+                OleDbCommand cmd = new OleDbCommand(updateString, connection);
+                cmd.ExecuteNonQuery();
+
+                connection.Close(); //Close Connection
             }
             catch (Exception ex)
             {

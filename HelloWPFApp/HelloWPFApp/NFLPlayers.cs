@@ -24,7 +24,12 @@
 
         public string getFullName()
         {
-            return getFirstName() + " " + getLastName();
+            return getFirstName() + " " + getLastName() + " " + getPosition();
+        }
+
+        public string getFullNameAndPosition()
+        {
+            return getFirstName() + " " + getLastName() + ", " + getPosition();
         }
 
         public string getFirstName()
@@ -35,6 +40,11 @@
         public string getLastName()
         {
             return lastName;
+        }
+
+        public string getPosition()
+        {
+            return position;
         }
     }
 }
